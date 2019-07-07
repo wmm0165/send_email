@@ -7,23 +7,24 @@ from email.header import Header
 import time
 
 
-def send_email(filename):
+def send_email():
     #   打开报告文件读取文件内容
-    filename = './report/'+ time.strftime('%Y-%m-%d %H_%M_%S')
-    f = open(filename, 'r')
-    file_msg = f.read()
-    print(filename)
-    print(file_msg)
-    f.close()
+    # filename = './report/'+ time.strftime('%Y-%m-%d %H_%M_%S')
+    # f = open(filename, 'r')
+    # file_msg = f.read()
+    file_msg = '<html><h1> python test send imail</h1></html>'
+    # print(filename)
+    # print(file_msg)
+    # f.close()
     #   邮件服务器
     smtpserver = 'smtp.qq.com'
     #   发件人用户名和密码
-    user = 'username@qq.com'
-    password = 'gifhhsbgqyovbhhc'
+    user = '2548558583@qq.com'
+    password = 'gzrbuvesszycdifb'  # 授权码
     #   发件人
-    sender = 'sender@qq.com'
+    sender = '2548558583@qq.com'
     #   收件人
-    receiver = 'receiver@qq.com'
+    receiver = '2548558583@qq.com'
     #   邮件主题
     subject = 'Python test send email'
     #   邮件设置
@@ -31,7 +32,7 @@ def send_email(filename):
     msg['subject'] = Header(subject, 'utf-8')
     msg['from'] = sender
     #   连接服务器，登录服务器，发送邮件
-    smtp = smtplib.SMTP()
+    smtp = smtplib.SMTP_SSL()
     smtp.connect(smtpserver, 465)
     smtp.login(user, password)
     try:
@@ -45,4 +46,4 @@ def send_email(filename):
 
 
 if __name__ == '__main__':
-    send_email('./report/2018-07-16 13_09_21')
+    send_email()
